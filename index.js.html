@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+<script>
+
+const ws = new WebSocket("wss://ws.rexzy.online");
+
+ws.onmessage = (event) => {
+
+    try {
+
+        const data = JSON.parse(event.data);
+
+        document.body.innerText = data.text || event.data; // replace with new message
+
+    } catch {
+
+        document.body.innerText = event.data; // fallback if not JSON
+
+    }
+
+};
+
+</script>
+
+</body>
+
+</html>
+
